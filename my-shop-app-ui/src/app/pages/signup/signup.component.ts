@@ -21,7 +21,7 @@ export class SignupComponent {
       lastName: ['', [Validators.required, Validators.maxLength(50)]],
       phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
       email: ['', [Validators.required, Validators.maxLength(50), Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
-      address1: ['', Validators.maxLength(100)],
+      address1: ['', [Validators.required, Validators.maxLength(100)]],
       address2: ['', Validators.maxLength(100)],
     });
   }

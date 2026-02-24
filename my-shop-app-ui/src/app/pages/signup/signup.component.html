@@ -49,8 +49,9 @@
 
       <div class="form-group">
         <label>
-          Address 1
+          Address 1 *
           <input formControlName="address1" type="text" />
+          <span *ngIf="signupForm.get('address1')?.hasError('required')" class="error">Required</span>
           <span *ngIf="signupForm.get('address1')?.hasError('maxlength')" class="error">Max 100 characters</span>
         </label>
       </div>
