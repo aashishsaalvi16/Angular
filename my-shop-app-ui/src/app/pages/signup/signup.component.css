@@ -1,5 +1,5 @@
-.signup-page { display: flex; align-items: center; justify-content: center; height: 100vh; background: #f5f7fb; }
-.signup-box { background: white; padding: 32px; border-radius: 8px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08); width: 400px; max-height: 90vh; overflow-y: auto; }
+.signup-page { display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #f5f7fb; padding: 20px; }
+.signup-box { background: white; padding: 32px; border-radius: 8px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08); width: 400px; }
 h2 { margin: 0 0 24px 0; }
 .form-group { margin-bottom: 16px; }
 label { display: block; font-size: 14px; color: #333; font-weight: 500; }
