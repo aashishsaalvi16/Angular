@@ -1,8 +1,11 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
+  imports: [CommonModule],
   template: `
     <div class="dashboard-container">
       <h1>Dashboard</h1>
@@ -34,7 +37,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
       <div class="info-section">
         <h2>Quick Links</h2>
         <ul class="info-list">
-          <li>
+          <li *ngIf="role === 'admin'">
             <a href="#user-master" aria-label="Go to User Master">👤 Manage Users</a>
           </li>
           <li>
@@ -44,6 +47,8 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
             <a href="#add-expense" aria-label="Go to Add Expense">💰 Add Expense</a>
           </li>
         </ul>
+        <p *ngIf="role === 'admin'" class="admin-note">You are signed in as <strong>Admin</strong>.</p>
+        <p *ngIf="role === 'user'" class="user-note">You are signed in as <strong>User</strong>.</p>
       </div>
     </div>
   `,
@@ -167,4 +172,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardComponent {}
+export class DashboardComponent {
+  role: 'admin' | 'user' | null;
+  constructor(private auth: AuthService) {
+    this.role = this.auth.getRole();
+  }
+}
