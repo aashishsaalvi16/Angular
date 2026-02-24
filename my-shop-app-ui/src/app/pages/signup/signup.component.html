@@ -30,16 +30,19 @@
 
       <div class="form-group">
         <label>
-          Phone
+          Phone *
           <input formControlName="phone" type="text" />
-          <span *ngIf="signupForm.get('phone')?.hasError('maxlength')" class="error">Max 10 characters</span>
+          <span *ngIf="signupForm.get('phone')?.hasError('required')" class="error">Required</span>
+          <span *ngIf="signupForm.get('phone')?.hasError('pattern')" class="error">Must be 10 digits</span>
         </label>
       </div>
 
       <div class="form-group">
         <label>
-          Email
+          Email *
           <input formControlName="email" type="email" />
+          <span *ngIf="signupForm.get('email')?.hasError('required')" class="error">Required</span>
+          <span *ngIf="signupForm.get('email')?.hasError('email')" class="error">Invalid email format</span>
           <span *ngIf="signupForm.get('email')?.hasError('maxlength')" class="error">Max 50 characters</span>
         </label>
       </div>
