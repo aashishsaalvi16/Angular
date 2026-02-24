@@ -12,8 +12,8 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 })
 export class SidebarLayoutComponent {
   menuItems = [
-    { label: 'User Master', icon: '👤', route: '/user-master' },
-    { label: 'Product Master', icon: '📦', route: '/product-master' },
-    { label: 'Add Expense', icon: '💰', route: '/add-expense' },
+    { label: 'User Master', icon: '👤', route: '/app/user-master' },
+    { label: 'Product Master', icon: '📦', route: '/app/product-master' },
+    { label: 'Add Expense', icon: '💰', route: '/app/add-expense' },
   ];
 }

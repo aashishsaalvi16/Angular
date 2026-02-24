@@ -19,7 +19,7 @@ export class LoginComponent {
     const role = username === 'admin' ? 'admin' : 'user';
     this.auth.login(role as 'admin' | 'user');
     // navigate to dashboard after login
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/app/dashboard']);
   }
 
   goToSignup() {

@@ -6,9 +6,12 @@ import { ProductMasterComponent } from './pages/product-master/product-master.co
 import { AddExpenseComponent } from './pages/add-expense/add-expense.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
-import { AuthGuard } from './services/auth.guard';
+import { authGuard } from './services/auth.guard';
 
 export const routes: Routes = [
+  // default redirect to login
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+
   // public login route (initial page)
   { path: 'login', component: LoginComponent },
 
@@ -17,9 +20,9 @@ export const routes: Routes = [
 
   // protected app routes inside the sidebar layout
   {
-    path: '',
+    path: 'app',
     component: SidebarLayoutComponent,
-    canActivate: [AuthGuard],
+    canActivate: [authGuard],
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent },
@@ -29,6 +32,6 @@ export const routes: Routes = [
     ],
   },
 
-  // fallback
-  { path: '**', redirectTo: 'login' },
+  // fallback - catch all unmatched routes
+  { path: '**', redirectTo: '/login' },
 ];
