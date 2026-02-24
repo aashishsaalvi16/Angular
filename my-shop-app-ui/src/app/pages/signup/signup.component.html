@@ -1,7 +1,11 @@
 <div class="signup-page">
   <div class="signup-box">
     <h2>Create Account</h2>
-    <form [formGroup]="signupForm" (submit)="onSubmit()">
+
+    <div *ngIf="errorMessage()" class="alert alert-error">{{ errorMessage() }}</div>
+    <div *ngIf="successMessage()" class="alert alert-success">{{ successMessage() }}</div>
+
+    <form [formGroup]="signupForm" (submit)="onSubmit()" [ngClass]="{ disabled: isLoading() }">
       <div class="form-group">
         <label>
           First Name *
@@ -64,7 +68,9 @@
         </label>
       </div>
 
-      <button type="submit" [disabled]="!signupForm.valid">Sign Up</button>
+      <button type="submit" [disabled]="!signupForm.valid || isLoading()">
+        {{ isLoading() ? 'Signing Up...' : 'Sign Up' }}
+      </button>
     </form>
     <p class="login-link">Already have an account? <a href="javascript:void(0)" (click)="goToLogin()">Sign in here</a></p>
   </div>
