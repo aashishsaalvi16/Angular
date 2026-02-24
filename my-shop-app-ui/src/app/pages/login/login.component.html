@@ -1,0 +1,17 @@
+<div class="login-page">
+  <div class="login-box">
+    <h2>Sign in</h2>
+    <form (submit)="onSubmit(username.value, password.value)">
+      <label>
+        Username
+        <input #username type="text" required />
+      </label>
+      <label>
+        Password
+        <input #password type="password" required />
+      </label>
+      <p class="hint">Use username "admin" for Admin role; any other username becomes User.</p>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</div>
