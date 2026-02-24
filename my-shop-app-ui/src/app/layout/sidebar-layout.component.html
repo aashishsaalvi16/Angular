@@ -1,0 +1,50 @@
+<div class="app-container">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <!-- Logo/Dashboard Link -->
+    <div class="logo-section">
+      <a routerLink="/dashboard" class="logo-link" title="Go to Dashboard">
+        <span class="logo-icon">🏪</span>
+        <span class="logo-text">My Shop</span>
+      </a>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="menu">
+      <a
+        routerLink="/dashboard"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="menu-item"
+        title="Go to Dashboard"
+      >
+        <span class="menu-icon">📊</span>
+        <span class="menu-label">Dashboard</span>
+      </a>
+
+      <div class="menu-divider"></div>
+
+      @for (item of menuItems; track item.route) {
+      <a
+        [routerLink]="item.route"
+        routerLinkActive="active"
+        class="menu-item"
+        [title]="'Go to ' + item.label"
+      >
+        <span class="menu-icon">{{ item.icon }}</span>
+        <span class="menu-label">{{ item.label }}</span>
+      </a>
+      }
+    </nav>
+
+    <!-- Footer/Additional Info -->
+    <div class="sidebar-footer">
+      <p class="version-text">v1.0.0</p>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>
