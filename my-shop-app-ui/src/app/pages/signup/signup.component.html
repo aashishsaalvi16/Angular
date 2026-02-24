@@ -2,9 +2,6 @@
   <div class="signup-box">
     <h2>Create Account</h2>
 
-    <div *ngIf="errorMessage()" class="alert alert-error">{{ errorMessage() }}</div>
-    <div *ngIf="successMessage()" class="alert alert-success">{{ successMessage() }}</div>
-
     <form [formGroup]="signupForm" (submit)="onSubmit()" [ngClass]="{ disabled: isLoading() }">
       <div class="form-group">
         <label>

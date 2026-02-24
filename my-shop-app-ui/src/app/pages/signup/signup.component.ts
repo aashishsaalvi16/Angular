@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../services/user.service';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-signup',
@@ -15,13 +16,12 @@ import { UserService } from '../../services/user.service';
 export class SignupComponent {
   signupForm: FormGroup;
   isLoading = signal(false);
-  errorMessage = signal('');
-  successMessage = signal('');
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private toastService: ToastService
   ) {
     this.signupForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.maxLength(50)]],
@@ -37,13 +37,11 @@ export class SignupComponent {
   onSubmit() {
     if (this.signupForm.valid) {
       this.isLoading.set(true);
-      this.errorMessage.set('');
-      this.successMessage.set('');
 
       this.userService.registerUser(this.signupForm.value).subscribe({
         next: (response) => {
           this.isLoading.set(false);
-          this.successMessage.set('Account created successfully! Redirecting to login...');
+          this.toastService.success('Account created successfully! Redirecting to login...');
           setTimeout(() => {
             this.router.navigate(['/login']);
           }, 2000);
@@ -51,7 +49,7 @@ export class SignupComponent {
         error: (error) => {
           this.isLoading.set(false);
           const errorMsg = error?.error?.message || error?.message || 'Registration failed. Please try again.';
-          this.errorMessage.set(errorMsg);
+          this.toastService.error(errorMsg);
           console.error('Registration error:', error);
         },
       });
