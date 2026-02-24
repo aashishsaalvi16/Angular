@@ -21,4 +21,8 @@ export class LoginComponent {
     // navigate to dashboard after login
     this.router.navigate(['/dashboard']);
   }
+
+  goToSignup() {
+    this.router.navigate(['/signup']);
+  }
 }

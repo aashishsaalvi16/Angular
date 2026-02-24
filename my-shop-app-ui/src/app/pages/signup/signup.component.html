@@ -1,0 +1,67 @@
+<div class="signup-page">
+  <div class="signup-box">
+    <h2>Create Account</h2>
+    <form [formGroup]="signupForm" (submit)="onSubmit()">
+      <div class="form-group">
+        <label>
+          First Name *
+          <input formControlName="firstName" type="text" required />
+          <span *ngIf="signupForm.get('firstName')?.hasError('required')" class="error">Required</span>
+          <span *ngIf="signupForm.get('firstName')?.hasError('maxlength')" class="error">Max 50 characters</span>
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label>
+          Middle Name
+          <input formControlName="middleName" type="text" />
+          <span *ngIf="signupForm.get('middleName')?.hasError('maxlength')" class="error">Max 50 characters</span>
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label>
+          Last Name *
+          <input formControlName="lastName" type="text" required />
+          <span *ngIf="signupForm.get('lastName')?.hasError('required')" class="error">Required</span>
+          <span *ngIf="signupForm.get('lastName')?.hasError('maxlength')" class="error">Max 50 characters</span>
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label>
+          Phone
+          <input formControlName="phone" type="text" />
+          <span *ngIf="signupForm.get('phone')?.hasError('maxlength')" class="error">Max 10 characters</span>
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label>
+          Email
+          <input formControlName="email" type="email" />
+          <span *ngIf="signupForm.get('email')?.hasError('maxlength')" class="error">Max 50 characters</span>
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label>
+          Address 1
+          <input formControlName="address1" type="text" />
+          <span *ngIf="signupForm.get('address1')?.hasError('maxlength')" class="error">Max 100 characters</span>
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label>
+          Address 2
+          <input formControlName="address2" type="text" />
+          <span *ngIf="signupForm.get('address2')?.hasError('maxlength')" class="error">Max 100 characters</span>
+        </label>
+      </div>
+
+      <button type="submit" [disabled]="!signupForm.valid">Sign Up</button>
+    </form>
+    <p class="login-link">Already have an account? <a href="javascript:void(0)" (click)="goToLogin()">Sign in here</a></p>
+  </div>
+</div>

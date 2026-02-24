@@ -5,11 +5,15 @@ import { UserMasterComponent } from './pages/user-master/user-master.component';
 import { ProductMasterComponent } from './pages/product-master/product-master.component';
 import { AddExpenseComponent } from './pages/add-expense/add-expense.component';
 import { LoginComponent } from './pages/login/login.component';
+import { SignupComponent } from './pages/signup/signup.component';
 import { AuthGuard } from './services/auth.guard';
 
 export const routes: Routes = [
   // public login route (initial page)
   { path: 'login', component: LoginComponent },
+
+  // public signup route
+  { path: 'signup', component: SignupComponent },
 
   // protected app routes inside the sidebar layout
   {
