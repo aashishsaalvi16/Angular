@@ -10,7 +10,8 @@ export interface UserSignUp {
   phone: string;
   email: string;
   address1: string;
-  address2?: string;
+  address2?: string | null;
+  password: string;
 }
 
 export interface UserResponse {
